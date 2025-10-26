@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # moumatanaiiiii
-=======
+
 # miwax — LINE Queue Notifier + Web UI
 
 Queue management tool that:
@@ -13,7 +12,6 @@ Queue management tool that:
 
 ## System Design
 
-````mermaid
 graph TD
   U[User (LINE App)] -->|Follow| L[LINE Messaging API]
   L -->|Webhook /callback| W[Flask Webhook Server (main.py)]
@@ -31,7 +29,6 @@ graph TD
   L --> W
   W -->|Mark canceled (user_id=0)| UD
   W -->|Ack cancel| U
-````
 
 
 ## Repository Layout

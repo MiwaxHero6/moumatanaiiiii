@@ -1,0 +1,17 @@
+# compose.yaml
+version: "3"
+services:
+  python:
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    ports:
+      - "8888:8888"
+    command: python main.py
+    environment:
+      ENV: "dev"
+      NGROK_AUTHTOKEN: "${NGROK_AUTHTOKEN}"
+      LINE_CHANNEL_SECRET: "${LINE_CHANNEL_SECRET}"
+      LINE_CHANNEL_ACCESS_TOKEN: "${LINE_CHANNEL_ACCESS_TOKEN}"
+

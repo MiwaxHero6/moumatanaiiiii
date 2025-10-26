@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <body>
+        <h1>最新番号:{{saisin}}</h1>
+        <h1>呼び出し番号:{{yobidasi}}</h1>
+        <h1>待ち時間：{{matijikan}}分</h1>
+        <h1>所要時間：{{syoyojikan}}秒</h1>
+
+        <div class="member">
+            <form method="post">
+                <button formaction="/earlier" style="width:200px;height:50px">呼び出す</button>
+            </form>
+            <form method="post">
+                <button formaction="/quicker" style="width:200px;height:50px">所要時間10秒減らす</button>
+            </form>
+            <form method="post" >
+                <button formaction="/slower" style="width:200px;height:50px">所要時間10秒増やす</button>
+            </form>
+        </div>
+        <img src="static/048ofjnh.png" alt="QR">
+    </body>
+</html>

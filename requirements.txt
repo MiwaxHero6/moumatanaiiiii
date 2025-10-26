@@ -1,0 +1,5 @@
+Flask
+ngrok
+line-bot-sdk
+watchdog
+openai

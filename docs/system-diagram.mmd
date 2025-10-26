@@ -1,0 +1,17 @@
+flowchart TD
+U[User - LINE App] -->|Follow| L[LINE Messaging API]
+L -->|Webhook /callback| W[Flask Webhook - main.py]
+W -->|Append record| UD[(user_data.json)]
+W -->|Reply number and wait| U
+
+S[Staff - Web UI] -->|Adjust yobidasi/syoyojikan| Q[Queue Manager - app/app.py]
+Q -->|Write| NUM[(app/numbers.json)]
+FW[Watchdog Thread] -->|Monitor change| NUM
+FW -->|Lookup user_id for yobidasi| UD
+FW -->|Push your turn notification| L
+L --> U
+
+U -->|Text キャンセル| L
+L --> W
+W -->|Mark canceled user_id=0| UD
+W -->|Ack cancel| U

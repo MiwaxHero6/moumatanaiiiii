@@ -1,0 +1,43 @@
+import logging
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+saisin = 10
+yobidasi = 4
+syoyojikan = 180
+matijikan = 0
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    matijikan = (saisin-yobidasi)*syoyojikan
+    return render_template('index.html', saisin = saisin, yobidasi = yobidasi, matijikan = matijikan, syoyojikan = syoyojikan)
+
+@app.route('/earlier', methods=['post'])
+def earlier():
+    app.logger.warning('testing warning log')
+    global yobidasi
+    yobidasi += 1
+    matijikan = (saisin-yobidasi)*syoyojikan
+    return render_template('index.html', saisin = saisin, yobidasi = yobidasi, matijikan = matijikan, syoyojikan = syoyojikan)
+    
+@app.route('/quicker', methods = ['post'])
+def quicker():
+    app.logger.warning('testing warning log')
+    global syoyojikan
+    syoyojikan -= 10
+    matijikan = (saisin-yobidasi)*syoyojikan
+    return render_template('index.html', saisin = saisin, yobidasi = yobidasi, matijikan = matijikan, syoyojikan = syoyojikan)
+
+@app.route('/slower', methods = ['post'])
+def slower():
+    app.logger.warning('testing warning log')
+    global syoyojikan
+    syoyojikan += 10
+    matijikan = (saisin-yobidasi)*syoyojikan
+    return render_template('index.html', saisin = saisin, yobidasi = yobidasi, matijikan = matijikan, syoyojikan = syoyojikan)
+
+if __name__ == "__main__":
+    # app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
